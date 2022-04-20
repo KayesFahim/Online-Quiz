@@ -27,7 +27,7 @@ include "session.php";
   <body>
     <div class="container">
         <h2 class="text-center"> GK Quiz System </h2>
-        <h2 class="text-center"> Round 1 </h2>
+        <h2 class="text-center"> Round 2 </h2>
         <form method="POST">
         
         <?php
@@ -118,7 +118,7 @@ include "session.php";
 																	confirmButtonText: "Cool"
 																	},
 																	function(){
-																		window.location=\'round2.php\'
+																		window.location=\'round3.php\'
 																		});
 																	</script>';
                                                        
@@ -134,7 +134,7 @@ include "session.php";
 																	confirmButtonText: "Ops"
 																	},
 																	function(){
-																		window.location=\'round2.php\'
+																		window.location=\'round3.php\'
 																		});
 																	</script>';
                                                     }

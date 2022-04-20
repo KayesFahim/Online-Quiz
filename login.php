@@ -22,9 +22,9 @@
             <input autocomplete="off" type="email" name="inputEmail" class="form-control" placeholder="Email address" required>
             <input autocomplete="off" type="password" name="inputPassword" class="form-control" placeholder="Password" required>
 
-            <p>Not Registered ? <a href="registration.php"></a></p>
+            <p>Not Registered ? <a href="registration.php"> Create Account</a></p>
             
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+            <button class="btn btn-lg btn-primary btn-block" type="submit"> Sign in</button>
             
             </form>
 

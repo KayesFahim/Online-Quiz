@@ -1,13 +1,3 @@
-<?php
-
-include "session.php";
-
-
-
-
-?>
-
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -23,129 +13,60 @@ include "session.php";
     <title>Login</title>
     <!-- Custom styles for this template -->
     <link href="css/style.css" rel="stylesheet">
+
   </head>
-  <body>
+  <body class="text-center tobanner">
     <div class="container">
-        <h2 class="text-center"> GK Quiz System </h2>
-        <h2 class="text-center"> Round 1 </h2>
-        <form method="POST">
-        
-        <?php
+            <form autocomplete="off" class="form-signin" method="post">
+            <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
 
-												$sql = "SELECT * FROM quiz ORDER BY id DESC";
-												$result = $conn->query($sql);
-                                                $i =0;
-												if ($result->num_rows > 0) {
-  												while($row = $result->fetch_assoc()) {	
-                                                      $i++;												  
-													  $Question = $row['question'];
-                                                      $Option1 = $row['option1'];
-                                                      $Option2 = $row['option2'];
-                                                      $Option3 = $row['option3'];
-                                                      $Option4 = $row['option4'];
-                                                      ${'Ans'.$i} = $row['answere'];
+            <input autocomplete="off" type="email" name="inputEmail" class="form-control" placeholder="Email address" required>
+            <input autocomplete="off" type="password" name="inputPassword" class="form-control" placeholder="Password" required>
 
-                                                    
-
-													echo "<div class='container'>
-                                                            <h5>$i . $Question</h5><br/>
-                                                            <div class='form-check'>
-                                                                <input class='form-check-input' type='radio' name='ans$i' value='$Option1'>
-                                                                <label class='form-check-label' for='opt1for$i'>
-                                                                    $Option1
-                                                                </label>
-                                                                
-                                                            </div>
-                                                            <div class='form-check'>
-                                                                <input class='form-check-input' type='radio' name='ans$i' value='$Option2'>
-                                                                <label class='form-check-label' for='opt2for$i'>
-                                                                    $Option2
-                                                                </label>
-                                                            </div>
-                                                            <div class='form-check'>
-                                                                <input class='form-check-input' type='radio' name='ans$i' value='$Option3'>
-                                                                <label class='form-check-label' for='opt3for$i'>
-                                                                    $Option3
-                                                                </label>
-                                                            </div>
-                                                            <div class='form-check'>
-                                                                <input class='form-check-input' type='radio' name='ans$i' value='$Option4'>
-                                                                <label class='form-check-label' for='opt4for$i'>
-                                                                    $Option4
-                                                                </label>
-                                                            </div>
-                                                          
-                                                          </div>
-                                                          <hr>
-                                                            ";   											
-												  }
-												}
-												?>
-
-                                                
-                                                <button type="submit" class="btn btn-primary"> Submit </button>
-                                                </form>
-
-                                                <?php
-
-                                                if($_SERVER["REQUEST_METHOD"] == "POST") {
-
-                                                    $count=0;
-                                                    $x = 1;
-                                                    for($x == 1; $x <= 2; $x++){
-                                                        $Ans = 'ans'.$x;
-                                                        ${'Answere'.$x} = $_POST[$Ans];
-
-                                                        if(${'Answere'.$x} == ${'Ans'.$x}){
-                                                            $count+=10;
-
-                                                        }else{
-                                                            $count+=0;
-                                                        }
-                                                    }
-                                                    
-                                                    
-                                                    
-                                                    if($count == 20){
-
-                                                        echo "<script> window.alert('Your Passed ! Your Mark $count'); </script>";
-
-                                                        print '<script>
-																	swal({
-																	title: "Success!",
-																	text: " Your passed 1st Round !",
-																	type: "success",
-																	confirmButtonText: "Cool"
-																	},
-																	function(){
-																		window.location=\'round2.php\'
-																		});
-																	</script>';
-                                                       
-
-                                                    }else{
-                                                        echo "<script> window.alert('Your failed ! Your Mark $count'); </script>";
-
-                                                        print '<script>
-																	swal({
-																	title: "Error!",
-																	text: " Your Failed 1st Round ! Try Again",
-																	type: "error",
-																	confirmButtonText: "Ops"
-																	},
-																	function(){
-																		window.location=\'round2.php\'
-																		});
-																	</script>';
-                                                    }
-                                                    
-                                                    
-                    
-                                                }
-
-                                                ?>
-
+            <p>Not Registered ? <a href="registration.php"> Create Account</a></p>
             
+            <button class="btn btn-lg btn-primary btn-block" type="submit"> Sign in</button>
+            
+            </form>
+
+            <?php
+
+                include("config.php");
+                session_start();
+
+                if($_SERVER["REQUEST_METHOD"] == "POST") {
+                                    
+                    $userEmail = $_POST['inputEmail'];
+                    $mypassword = $_POST['inputPassword']; 
+                                  
+                    $sql = "SELECT id FROM users WHERE email = '$userEmail' and password = '$mypassword'";
+
+                    $result = mysqli_query($conn,$sql);
+                    $row = mysqli_fetch_array($result,MYSQLI_ASSOC); 
+                    $count = mysqli_num_rows($result);
+
+                    if($count == 1) {
+                    $_SESSION['login_user'] = $userEmail;      
+                    header("location: round1.php");
+                    }else {
+                    print '<script>
+                                    swal({
+                                    title: "Error!",
+                                    text: "Login Credentials Doesnt Match",
+                                    type: "error",
+                                    confirmButtonText: "ops"
+                                    },
+                                    function(){
+                                    window.location=\'index.php\'
+                                    });
+                                    </script>';        
+                        }
+                    }
+
+                ?>
+
+
+
 
     </div>
   </body>

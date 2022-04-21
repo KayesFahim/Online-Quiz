@@ -20,19 +20,19 @@ include "session.php";
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
-    <title>Round 2</title>
+    <title> Round 1</title>
     <!-- Custom styles for this template -->
     <link href="css/style.css" rel="stylesheet">
   </head>
   <body>
     <div class="container">
-        <h2 class="text-center"> GK Quiz System </h2>
-        <h2 class="text-center"> Round 2 </h2>
+        <h2 class="text-center mt-10"> GK Quiz System </h2>
+        <h2 class="text-center mb-10"> Round 1 </h2>
         <form method="POST">
         
         <?php
 
-												$sql = "SELECT * FROM quiz where round ='2' ORDER BY id DESC";
+												$sql = "SELECT * FROM quiz where round ='1' ORDER BY id DESC";
 												$result = $conn->query($sql);
                                                 $i =0;
 												if ($result->num_rows > 0) {
@@ -115,7 +115,7 @@ include "session.php";
 																	title: "Success!",
 																	text: " Your passed 1st Round !",
 																	type: "success",
-																	confirmButtonText: "Cool"
+																	confirmButtonText: "Next Round"
 																	},
 																	function(){
 																		window.location=\'round3.php\'
@@ -134,7 +134,7 @@ include "session.php";
 																	confirmButtonText: "Ops"
 																	},
 																	function(){
-																		window.location=\'round3.php\'
+																		window.location=\'round1.php\'
 																		});
 																	</script>';
                                                     }

@@ -63,7 +63,7 @@
 																	confirmButtonText: "Now You Can Login"
 																	},
 																	function(){
-																		window.location=\'login.php\'
+																		window.location=\'index.php\'
 																		});
 																	</script>';
 											

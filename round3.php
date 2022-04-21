@@ -32,7 +32,7 @@ include "session.php";
         
         <?php
 
-												$sql = "SELECT * FROM quiz ORDER BY id DESC";
+												$sql = "SELECT * FROM quiz where round ='2' ORDER BY id DESC";
 												$result = $conn->query($sql);
                                                 $i =0;
 												if ($result->num_rows > 0) {

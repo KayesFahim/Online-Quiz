@@ -2,8 +2,9 @@
 
 include "session.php";
 
-
-
+if($_SESSION['round1'] < 30 && $_SESSION['round2'] < 30){
+    header("location:round1.php");
+}
 
 ?>
 
@@ -32,7 +33,7 @@ include "session.php";
         
         <?php
 
-												$sql = "SELECT * FROM quiz where round ='2' ORDER BY id DESC";
+												$sql = "SELECT * FROM quiz where round ='3' ORDER BY id DESC";
 												$result = $conn->query($sql);
                                                 $i =0;
 												if ($result->num_rows > 0) {
@@ -92,7 +93,7 @@ include "session.php";
 
                                                     $count=0;
                                                     $x = 1;
-                                                    for($x == 1; $x <= 2; $x++){
+                                                    for($x == 1; $x <= 5; $x++){
                                                         $Ans = 'ans'.$x;
                                                         ${'Answere'.$x} = $_POST[$Ans];
 
@@ -105,20 +106,21 @@ include "session.php";
                                                     }
                                                     
                                                     
-                                                    
-                                                    if($count == 20){
+                                                    $_SESSION['round3'] = $count;
+
+                                                    if($count >= 30){
 
                                                         echo "<script> window.alert('Your Passed ! Your Mark $count'); </script>";
 
                                                         print '<script>
 																	swal({
 																	title: "Success!",
-																	text: " Your passed 1st Round !",
+																	text: " You passed the 3rd Round !",
 																	type: "success",
 																	confirmButtonText: "Cool"
 																	},
 																	function(){
-																		window.location=\'round3.php\'
+																		window.location=\'result.php\'
 																		});
 																	</script>';
                                                        
@@ -129,7 +131,7 @@ include "session.php";
                                                         print '<script>
 																	swal({
 																	title: "Error!",
-																	text: " Your Failed 1st Round ! Try Again",
+																	text: " Your Failed 3rd Round ! Try Again",
 																	type: "error",
 																	confirmButtonText: "Ops"
 																	},

@@ -1,9 +1,9 @@
 html,
 body {
-  height: 100%;
+  justify-content: center;
 }
 
-body {
+.login {
   display: -ms-flexbox;
   display: -webkit-box;
   display: flex;
@@ -16,6 +16,8 @@ body {
   padding-top: 40px;
   padding-bottom: 40px;
   background-image: url(../banner.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .form-signin {

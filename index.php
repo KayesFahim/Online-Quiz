@@ -15,15 +15,15 @@
     <link href="css/style.css" rel="stylesheet">
 
   </head>
-  <body class="text-center tobanner">
-    <div class="container">
+  <body class="login text-center">>
+    <div class="container" style="margin-top: 15%;">
             <form autocomplete="off" class="form-signin" method="post">
-            <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+            <h1 class="h3 mb-3 font-weight-normal" style="color: white;">Please sign in</h1>
 
             <input autocomplete="off" type="email" name="inputEmail" class="form-control" placeholder="Email address" required>
             <input autocomplete="off" type="password" name="inputPassword" class="form-control" placeholder="Password" required>
 
-            <p>Not Registered ? <a href="registration.php"> Create Account</a></p>
+            <p style="color: white;">Not Registered ? <a href="registration.php"> Create Account</a></p>
             
             <button class="btn btn-lg btn-primary btn-block" type="submit"> Sign in</button>
             
@@ -64,9 +64,6 @@
                     }
 
                 ?>
-
-
-
 
     </div>
   </body>

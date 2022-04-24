@@ -92,7 +92,7 @@ include "session.php";
 
                                                     $count=0;
                                                     $x = 1;
-                                                    for($x == 1; $x <= 2; $x++){
+                                                    for($x == 1; $x <= 5; $x++){
                                                         $Ans = 'ans'.$x;
                                                         ${'Answere'.$x} = $_POST[$Ans];
 
@@ -104,21 +104,21 @@ include "session.php";
                                                         }
                                                     }
                                                     
+                                                    $_SESSION['round1'] = $count;
                                                     
-                                                    
-                                                    if($count == 20){
+                                                    if($count >= 20){
 
                                                         echo "<script> window.alert('Your Passed ! Your Mark $count'); </script>";
 
                                                         print '<script>
 																	swal({
 																	title: "Success!",
-																	text: " Your passed 1st Round !",
+																	text: " You passed the 1st Round !",
 																	type: "success",
 																	confirmButtonText: "Next Round"
 																	},
 																	function(){
-																		window.location=\'round3.php\'
+																		window.location=\'round2.php\'
 																		});
 																	</script>';
                                                        
@@ -129,9 +129,9 @@ include "session.php";
                                                         print '<script>
 																	swal({
 																	title: "Error!",
-																	text: " Your Failed 1st Round ! Try Again",
+																	text: " You Failed 1st Round ! Try Again",
 																	type: "error",
-																	confirmButtonText: "Ops"
+																	confirmButtonText: "Ops! Try Again"
 																	},
 																	function(){
 																		window.location=\'round1.php\'
